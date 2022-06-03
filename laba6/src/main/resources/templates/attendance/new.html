@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create attendance</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/attendance}" th:object="${formAttendance}">
+    <label for="name_student">
+        Name student
+        <input type="text" th:field="*{nameStudent}" id="name_student" />
+    </label>
+    <div style="color: red" th:if="${#fields.hasErrors('nameStudent')}" th:errors="*{nameStudent}">
+        Name student error
+    </div>
+    <br />
+    <label for="surname_student">
+        Surname student
+        <input type="text" th:field="*{surnameStudent}" id="surname_student" />
+    </label>
+    <div style="color: red" th:if="${#fields.hasErrors('surnameStudent')}" th:errors="*{surnameStudent}">
+        Surname student error
+    </div>
+    <br />
+    <label for="middle_name_student">
+        Middle name student
+        <input type="text" th:field="*{middleNameStudent}" id="middle_name_student" />
+    </label>
+    <div style="color: red" th:if="${#fields.hasErrors('middleNameStudent')}" th:errors="*{middleNameStudent}">
+        Middle name error
+    </div>
+    <br />
+    <label for="attendance_student">
+        Attendance student
+        <input type="text" th:field="*{attendance}" id="attendance_student" />
+    </label>
+    <div style="color: red" th:if="${#fields.hasErrors('attendance')}" th:errors="*{attendance}">
+        Attendance student error
+    </div>
+    <br />
+    <input type="submit" value="Create">
+</form>
+</body>
+</html>

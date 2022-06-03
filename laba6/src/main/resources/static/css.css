@@ -1,0 +1,17 @@
+html,
+body {
+    height: 100%;
+}
+div.wrapper {
+    min-height: 100%;
+}
+main {
+    padding-bottom: 100px;
+    /*Высота футера*/
+}
+footer {
+    margin-top: -100px;
+    /*Минус Высота футера*/
+    height: 100px;
+    /*Высота футера*/
+}

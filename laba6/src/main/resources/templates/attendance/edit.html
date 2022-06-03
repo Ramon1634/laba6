@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit attendance</title>
+</head>
+<body>
+<div>
+    <p><a th:href="@{/student/{id}(id=${attendance.getStudent().getId()})}"
+          th:text="${attendance.getStudent().getSurname() + ' ' + attendance.getStudent().getFirstName().charAt(0) + '.'
+           + ' ' + attendance.getStudent().getMiddleName().charAt(0) + '.'}"></a></p>
+</div>
+<form th:method="PATCH" th:action="@{/attendance/{id}(id=${attendance.getId()})}" th:object="${attendance}">
+    <label for="attendance">
+        Attendance student
+        <input type="text" th:field="*{attend}" id="attendance" />
+    </label>
+    <br />
+    <input type="submit" value="Update">
+</form>
+</body>
+</html>

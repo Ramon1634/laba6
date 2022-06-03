@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit progress report</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+
+<header class="p-3 bg-primary text-dark">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="/" class="nav-link px-2 text-white">Главная</a></li>
+                <li><a href="#" class="nav-link px-2 text-white">О нас</a></li>
+            </ul>
+
+        </div>
+    </div>
+</header>
+
+<body>
+<h1 th:text="${'Отчет для студента ' + progressReport.getStudent().getSurname() + ' ' +
+    progressReport.getStudent().getFirstName().charAt(0) + '.' +
+    progressReport.getStudent().getMiddleName().charAt(0) + '.'}"></h1>
+<form th:method="PATCH" th:action="@{/progressReport/{id}(id=${progressReport.getId()})}" th:object="${progressReport}">
+    <div class="form-group mx-5">
+        <label for="discipline_name">Название предмета</label>
+        <input type="text" class="form-control" id="discipline_name" th:field="*{discipline}"
+               th:value="${progressReport.getDiscipline().getName()}">
+        <div style="color: red" th:if="${#fields.hasErrors('discipline')}" th:errors="*{discipline}">
+            Discipline name error
+        </div>
+        <br />
+        <label for="time">Оценка</label>
+        <input type="text" class="form-control" id="time" th:field="*{rate}"
+               th:value="${progressReport.getRate()}">
+        <div style="color: red" th:if="${#fields.hasErrors('rate')}" th:errors="*{rate}">
+            Rate error
+        </div>
+        <br />
+        <input class="btn btn-primary" type="submit" value="Update">
+    </div>
+</form>
+</body>
+
+<div class="container">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
+        <p class="col-md-4 mb-0 text-muted">&copy; 2022 School company, Inc</p>
+
+        <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+        </a>
+
+        <ul class="nav col-md-4 justify-content-end">
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Главная</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">О нас</a></li>
+        </ul>
+    </footer>
+</div>
+
+</html>

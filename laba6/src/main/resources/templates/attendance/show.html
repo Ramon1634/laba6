@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Attendance</title>
+</head>
+<body>
+<div>
+    <p th:text="${attendance.getStudent().getSurname()}">student_surname</p>
+    <p th:text="${attendance.getStudent().getFirstName()}">student_first_name</p>
+    <p th:text="${attendance.getStudent().getMiddleName()}">student_middle_name</p>
+    <p th:text="${attendance.getAttend()}">student_attendance</p>
+    <p><a th:href="@{/attendance/{id}/edit(id=${attendance.getId()})}">Edit</a></p>
+
+    <form th:method="DELETE" th:action="@{/attendance/{id}(id=${attendance.getId()})}">
+        <input type="submit" value="Delete" />
+    </form>
+</div>
+</body>
+</html>

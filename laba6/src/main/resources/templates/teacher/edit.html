@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Изменить преподавателя</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+
+<header class="p-3 bg-primary text-dark">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="/" class="nav-link px-2 text-white">Главная</a></li>
+                <li><a href="/teacher/new" class="nav-link px-2 text-white">Добавить преподавателя</a></li>
+                <li><a href="#" class="nav-link px-2 text-white">О нас</a></li>
+            </ul>
+
+        </div>
+    </div>
+</header>
+
+<body>
+<form th:method="PATCH" th:action="@{/teacher/{id}(id=${teacher.getId()})}" th:object="${teacher}">
+    <div class="form-group mx-5">
+        <div class="row">
+            <div class="col">
+                <label for="surname_teacher">Фамилия преподавателя</label>
+                <input type="text" class="form-control" id="surname_teacher"
+                       th:field="*{surname}" th:value="${teacher.getSurname()}"
+                       placeholder="Фамилия преподавателя"/>
+                <div style="color: red" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">
+                    Surname error
+                </div>
+            </div>
+            <div class="col">
+                <label for="first_name_teacher">Имя преподавателя</label>
+                <input type="text" class="form-control" id="first_name_teacher"
+                       th:field="*{firstName}" th:value="${teacher.getFirstName()}"
+                       placeholder="Имя преподавателя"/>
+                <div style="color: red" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">
+                    Firstname error
+                </div>
+            </div>
+            <div class="col">
+                <label for="middle_name_teacher">Имя преподавателя</label>
+                <input type="text" class="form-control" id="middle_name_teacher"
+                       th:field="*{middleName}" th:value="${teacher.getMiddleName()}"
+                       placeholder="Отчество преподавателя"/>
+                <div style="color: red" th:if="${#fields.hasErrors('middleName')}" th:errors="*{middleName}">
+                    Middlename error
+                </div>
+            </div>
+        </div>
+        <label for="age_student">Возраст преподавателя</label>
+        <input type="text" class="form-control" id="age_student"
+               th:field="*{age}" th:value="${teacher.getAge()}"
+               placeholder="Возраст преподавателя">
+        <div style="color: red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">
+            Age teacher error
+        </div>
+        <input class="btn btn-primary mt-3" type="submit" value="Update">
+    </div>
+</form>
+</body>
+
+<div class="container">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
+        <p class="col-md-4 mb-0 text-muted">&copy; 2022 School company, Inc</p>
+
+        <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+        </a>
+
+        <ul class="nav col-md-4 justify-content-end">
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Главная</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">О нас</a></li>
+        </ul>
+    </footer>
+</div>
+
+</html>
